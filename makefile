@@ -1,12 +1,13 @@
-all : setup.c write.c
-	gcc setup.c write.c
+all : write.c
+	gcc -o out write.c
 
 run : all
-	./a.out
+	./out
 
 setup: setup.c
 	gcc -o set setup.c
 	./set ${arg}
 
-clean : a.out
-	rm a.out
+clean : 
+	rm out
+	rm set
