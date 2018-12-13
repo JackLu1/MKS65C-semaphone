@@ -34,13 +34,20 @@ int main(int argc, char ** argv){
     //printf("flag = %s\n", cmd);
     if (strcmp(cmd, "-c") == 0) {
         printf("create\n");
+        create_shm();
     } else if (strcmp(cmd, "-r") == 0) {
         printf("remove\n");
+        remove_shm();
     } else if (strcmp(cmd, "-v") == 0){
         printf("view\n");
+        view_shm();
     } else {
         printf("invalid command\n");
+        exit(0);
     }
 
     return 0;
+}
+
+void create_shm(){
 }
