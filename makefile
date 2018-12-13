@@ -4,10 +4,10 @@ all : write.c
 run : all
 	./out
 
-setup: setup.c
-	gcc -o set setup.c
-	./set ${arg}
+setup: control.c
+	gcc -o ctrl control.c
+	./ctrl ${arg}
 
 clean : 
 	rm out
-	rm set
+	rm ctrl

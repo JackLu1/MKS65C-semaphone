@@ -9,6 +9,7 @@
 
 #define KEY 0xDEADBEEF
 
+void create();
 
 int main(int argc, char ** argv){
     char * cmd = malloc(12);
@@ -22,8 +23,7 @@ int main(int argc, char ** argv){
         printf("too many args\n");
         exit(0);
     }
-
-    printf("flag = %s\n", cmd);
+    //printf("flag = %s\n", cmd);
 
     return 0;
 }
