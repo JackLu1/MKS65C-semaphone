@@ -9,11 +9,19 @@
 
 #define KEY 0xDEADBEEF
 
-void create();
+void create_shm();
+void remove_shm();
+void view_shm();
+
+union semun {
+    int              val;    /* Value for SETVAL */
+    struct semid_ds *buf;    /* Buffer for IPC_STAT, IPC_SET */
+    unsigned short  *array;  /* Array for GETALL, SETALL */
+    struct seminfo  *__buf;  /* Buffer for IPC_INFO */
+};
 
 int main(int argc, char ** argv){
     char * cmd = malloc(12);
-    printf("%i\n", argc);
     if (argc < 2){
         printf("include -c -r -v flag in cmd line using arg=flag\n");
         exit(0);
@@ -24,6 +32,15 @@ int main(int argc, char ** argv){
         exit(0);
     }
     //printf("flag = %s\n", cmd);
+    if (strcmp(cmd, "-c") == 0) {
+        printf("create\n");
+    } else if (strcmp(cmd, "-r") == 0) {
+        printf("remove\n");
+    } else if (strcmp(cmd, "-v") == 0){
+        printf("view\n");
+    } else {
+        printf("invalid command\n");
+    }
 
     return 0;
 }
