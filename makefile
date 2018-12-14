@@ -1,11 +1,11 @@
 all : write.c
 	gcc -o out write.c
+	gcc -o ctrl control.c
 
 run : all
 	./out
 
-setup: control.c
-	gcc -o ctrl control.c
+setup : all
 	./ctrl ${arg}
 
 clean : 
