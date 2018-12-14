@@ -28,7 +28,7 @@ int main(){
     }
     union semun us;
     us.val = 1;
-    semctl(semid, 0 , SETVAL, us);
+    while(!semctl(semid, 0 , SETVAL, us));
 
     int shmid = shmget(SHM_KEY, 8, 0644);
     if (shmid < 0){
