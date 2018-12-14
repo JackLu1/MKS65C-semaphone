@@ -27,8 +27,10 @@ int main(){
         exit(1);
     }
     union semun us;
+    printf("waiting for semaphore\n");
     us.val = 1;
-    while(!semctl(semid, 0 , SETVAL, us));
+    semctl(semid, 0, SETVAL, us);
+    //while(!semctl(semid, 0 , SETVAL, us));
 
     int shmid = shmget(SHM_KEY, 8, 0644);
     if (shmid < 0){
@@ -43,7 +45,6 @@ int main(){
     sb.sem_num = 0;
     sb.sem_flg = SEM_UNDO;
     sb.sem_op = -1;
-    printf("waiting for semaphore\n");
     semop(semid, &sb, 1);
     printf("got semaphore\n");
 
@@ -93,6 +94,7 @@ int main(){
     *data = length;
     //UPPING
     sb.sem_op = 1;
+    printf("up\n");
     semop(semid, &sb, 1);
 
 }
