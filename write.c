@@ -27,7 +27,7 @@ int main(){
         exit(1);
     }
     union semun us;
-    printf("waiting for semaphore\n");
+    //printf("waiting for semaphore\n");
     us.val = 1;
     while(!semctl(semid, 0, GETVAL, us));
     //while(!semctl(semid, 0 , SETVAL, us));
@@ -46,7 +46,7 @@ int main(){
     sb.sem_flg = SEM_UNDO;
     sb.sem_op = -1;
     semop(semid, &sb, 1);
-    printf("got semaphore\n");
+    //printf("got semaphore\n");
 
     char * data = shmat(shmid, 0, 0);
     if (*data < 0){
@@ -76,7 +76,7 @@ int main(){
     char new_line[100];
     fgets(new_line, 100, stdin);
     int length = strlen(new_line);
-    printf("the length of the new line is %d\n", length);
+    //printf("the length of the new line is %d\n", length);
 
     //write to file
     fd = open("story.txt", O_WRONLY|O_APPEND);
@@ -88,13 +88,13 @@ int main(){
         printf("problem writing to story file\n");
     }
     else{
-        printf("added new line to the story\n");
+      //printf("A new line was added to the story");
     }
 
     *data = length;
     //UPPING
     sb.sem_op = 1;
-    printf("up\n");
+    //printf("up\n");
     semop(semid, &sb, 1);
 
 }

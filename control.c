@@ -96,9 +96,9 @@ void delete(){
     s.sem_op = -1;
     s.sem_num = 0;
     s.sem_flg = SEM_UNDO;
-    printf("waiting for semaphore\n");
+    //printf("waiting for semaphore\n");
     semop(semid, &s, 1);
-    printf("got semaphore\n");
+    //printf("got semaphore\n");
     semctl(semid, 0, IPC_RMID, NULL);
 
     //file
