@@ -29,7 +29,7 @@ int main(){
     union semun us;
     printf("waiting for semaphore\n");
     us.val = 1;
-    semctl(semid, 0, SETVAL, us);
+    while(!semctl(semid, 0, GETVAL, us));
     //while(!semctl(semid, 0 , SETVAL, us));
 
     int shmid = shmget(SHM_KEY, 8, 0644);
